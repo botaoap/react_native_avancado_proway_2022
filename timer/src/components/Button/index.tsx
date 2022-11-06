@@ -6,6 +6,7 @@ type Props = {
     text: string;
     color?:"blue" | "grey" | "purple";
     size?: "small" |  "normal";
+    onPress: VoidFunction;
 }
 
 export function Button(props: Props) {
@@ -26,10 +27,12 @@ export function Button(props: Props) {
         case "purple":
             backgroundColor = colors.buttonPurple;
             break;
+        default:
+            backgroundColor = colors.button;
     }
 
     return (
-        <TouchableOpacity style={[styles.button, { backgroundColor, ...size }]}>
+        <TouchableOpacity onPress={props.onPress} style={[styles.button, { backgroundColor, ...size }]}>
             <Text style={styles.text}> {props.text} </Text>
         </TouchableOpacity>
     )
