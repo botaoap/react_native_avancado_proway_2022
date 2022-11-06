@@ -1,17 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from './src/components/Button';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { TimerProvider } from './src/contexts/TimerContext';
+import { TimerDefinition } from './src/screens/TimerDefinitionScreen';
+import { TimerScreen } from './src/screens/TimerScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Button text="0" />
-      <Button text="1" color='blue'/>
-      <Button text="2" color='purple'/>
-      <Button text="3" color='grey'/>
-      <Button text="4" color='grey' size='small'/>
-      <StatusBar style="auto" />
-    </View>
+    <TimerProvider>
+      <StatusBar />
+      <SafeAreaView style={styles.container}>
+        {/* <TimerDefinition /> */}
+        <TimerScreen/>
+      </SafeAreaView>
+    </TimerProvider>
   );
 }
 
