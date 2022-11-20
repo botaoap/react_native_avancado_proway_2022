@@ -13,3 +13,4 @@ No terminal da pasta do projeto
 
 # HELP - DESK
 - npm i
+- npx expo start -c

@@ -1,4 +1,4 @@
-import { Button } from "../../Controllers/Button";
+import { Button } from "../../Controllers/Buttom";
 import { Input } from "../../Controllers/Input";
 import { Form, Title } from "./styles";
 import { useState } from "react";

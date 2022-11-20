@@ -7,6 +7,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider } from "styled-components/native";
 import { Routes } from "./src/routes";
 import { AuthRoutes } from './src/routes/AuthRoutes';
+import { Home } from "./src/screens/Home";
 import theme from './src/theme';
 
 export default function App() {
@@ -16,25 +17,16 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <Text >loading...</Text>
+    return <Text>loading...</Text>
   }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      
         <ThemeProvider theme={theme}>
           <StatusBar style="dark" translucent backgroundColor="transparent" />
-          <Routes />
+          {/* <Routes /> */}
+          <Home />
         </ThemeProvider>
     </GestureHandlerRootView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
