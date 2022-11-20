@@ -1,7 +1,13 @@
 import styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
 
-export const Container = styled(RectButton)`
+export type ButtonStyleProps = {
+    disabled?: boolean;
+}
+
+export const Container = styled(RectButton).attrs<ButtonStyleProps>(({ disabled }) => ({
+    opacity: disabled ? 1 : 0.7
+}))`
     width: 100%;
     height: 56px;
     border-radius: 12px;

@@ -1,3 +1,5 @@
+import React from "react";
+import { NewOrder } from "../../components/Controllers/NewOrder";
 import { Header } from "../../components/Layout/Header";
 import { Orders } from "../../components/Lists/Orders";
 import { Container } from "./styles";
@@ -7,7 +9,7 @@ export function Home() {
         <Container>
             <Header />
             <Orders />
-            {/* <NewOrder /> */}
+            <NewOrder />
         </Container>
     );
 }

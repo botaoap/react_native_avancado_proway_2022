@@ -10,6 +10,11 @@ export const Title = styled.Text`
     color: ${({ theme }) => theme.COLORS.TEXT};
 `;
 
+export const Error = styled.Text`
+    color: red;
+    font-size: 12px;
+`;
+
 export const Footer = styled.View`
     flex-direction: row;
     justify-content: space-between;

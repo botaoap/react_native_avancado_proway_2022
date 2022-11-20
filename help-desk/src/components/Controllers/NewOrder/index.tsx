@@ -5,11 +5,11 @@ import { Buttom } from "../Buttom";
 import { Background } from "./styles";
 
 export function NewOrder() {
-    function handleSnapPress() {
-
-    }
-
     const bottomSheetRef = useRef<BottomSheetModal>(null!);
+
+    function handleSnapPress() {
+        bottomSheetRef.current.present();
+    }
 
     return (
         <>
@@ -21,7 +21,7 @@ export function NewOrder() {
                     enablePanDownToClose={true}
                     snapPoints={["50%"]}
                     ref={bottomSheetRef}
-                    backdropComponent={() => <Background />}
+                    backgroundComponent={() => <Background />}
                 >
                     <OrderForm />
                 </BottomSheetModal>
