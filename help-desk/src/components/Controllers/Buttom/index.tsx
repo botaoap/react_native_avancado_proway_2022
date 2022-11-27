@@ -6,7 +6,7 @@ type Props = RectButtonProps & ButtonStyleProps & {
     isLoading?: boolean;
 }
 
-export function Buttom({ disabled, title, isLoading = false, ...rest }: Props) {
+export function Button({ disabled, title, isLoading = false, ...rest }: Props) {
     return (
         <Container disabled={disabled} enabled={!isLoading} {...rest}>
             {isLoading ? <Load /> : <Title>{title}</Title>}

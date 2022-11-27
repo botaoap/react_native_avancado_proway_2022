@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Buttom } from "../../Controllers/Buttom";
+import { Button } from "../../Controllers/Buttom";
 import { FooterButton } from "../../Controllers/FooterButton";
 import { Input } from "../../Controllers/Input";
 import { Form, Title, Footer } from "./styles";
@@ -9,6 +9,8 @@ import { AuthStackParamList } from "../../../routes/AuthRoutes";
 import { Error } from "./styles"
 import * as yup from "yup"
 import { Formik } from "formik";
+import auth from "@react-native-firebase/auth"
+import { Alert } from "react-native";
 
 type SignInScreenNavigationProp = NativeStackNavigationProp<AuthStackParamList, "SignIn">;
 
@@ -34,7 +36,15 @@ export function SignInForm() {
 
     const navigation = useNavigation<SignInScreenNavigationProp>();
 
-    function handleSignIn() {}
+    function handleSignIn(values) {
+        setIsLoading(true);
+        auth()
+            .signInWithEmailAndPassword(values.email, values.password)
+            .then(() => Alert.alert("Sucesso", "Usuario autenticado com sucesso"))
+            .catch(() => Alert.alert("Falha", "Nao foi possivel realizar o login"))
+            .finally(() => setIsLoading(false))
+        
+    }
 
     function handleForgotPassword() {}
 
@@ -57,7 +67,7 @@ export function SignInForm() {
                         touched.password && !!errors.password &&
                         <Error>{errors.password}</Error>
                     }
-                    <Buttom title="Entrar" onPress={handleSignIn} isLoading={isLoading} disabled={isValid}/>
+                    <Button title="Entrar" onPress={handleSignIn} isLoading={isLoading} disabled={isValid}/>
                     
                     <Footer>
                         <FooterButton title="Criar conta" icon="person-add" onPress={() => navigation.navigate("Register")} />
