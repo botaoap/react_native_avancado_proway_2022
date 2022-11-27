@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaView } from "react-native-safe-area-context";
 import { ThemeProvider } from "styled-components/native";
 import { Routes } from "./src/routes";
 import { AuthRoutes } from './src/routes/AuthRoutes';

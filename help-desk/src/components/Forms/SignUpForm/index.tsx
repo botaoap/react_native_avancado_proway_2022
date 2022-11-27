@@ -1,8 +1,8 @@
-import { Button } from "../../Controllers/Buttom";
+import { Button } from "../../Controllers/Button";
 import { Input } from "../../Controllers/Input";
 import { Form, Title } from "./styles";
 import { useState } from "react";
-import auth from "@react-native-firebase/auth"
+import auth from "@react-native-firebase/auth";
 import { Alert } from "react-native";
 
 export function SignUpForm() {
@@ -14,8 +14,8 @@ export function SignUpForm() {
         setIsLoading(true);
         auth()
             .createUserWithEmailAndPassword(email, password)
-            .then(() => Alert.alert("Sucesso", "Usuario criado com sucesso!"))
-            .catch(() => Alert.alert("Falha", "Nao foi possivel criar usuario"))
+            .then(() => Alert.alert("Sucesso", "Usuário criado com sucesso!"))
+            .catch(() => Alert.alert("Falha", "Não foi possível criar o usuário"))
             .finally(() => setIsLoading(false))
     }
 

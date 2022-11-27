@@ -1,12 +1,14 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { Container, Content, Footer, Header, Info, Label, OrderStyleProps, Status, Title } from "./styles";
 import { useTheme } from "styled-components/native";
+import moment from "moment";
 
 export type OrderProps = OrderStyleProps & {
     id: string;
     patrimony: string;
     equipment: string;
     description: string;
+    created_at: number;
 }
 
 type Props = {
@@ -22,7 +24,7 @@ export function Order({ data }: Props) {
 
             <Content>
                 <Header>
-                    <Title>Computador Gamer</Title>
+                    <Title>{data.description}</Title>
                     <MaterialIcons
                         name={data.status === "open" ? "hourglass-empty" : "check-circle"}
                         size={24}
@@ -33,11 +35,11 @@ export function Order({ data }: Props) {
                 <Footer>
                     <Info>
                         <MaterialIcons name="schedule" size={16} color={COLORS.SUBTEXT} />
-                        <Label>20/11/2022</Label>
+                        <Label>{moment.unix(data.created_at).format("DD/MM/YYYY")}</Label>
                     </Info>
                     <Info>
                         <MaterialIcons name="my-location" size={16} color={COLORS.SUBTEXT} />
-                        <Label>402345</Label>
+                        <Label>{data.patrimony}</Label>
                     </Info>
                 </Footer>
             </Content>

@@ -1,7 +1,7 @@
-import { BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import React, { useRef } from "react";
+import { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from "@gorhom/bottom-sheet";
+import { useRef } from "react";
 import { OrderForm } from "../../Forms/OrderForm";
-import { Buttom } from "../Buttom";
+import { Button } from "../Button";
 import { Background } from "./styles";
 
 export function NewOrder() {
@@ -13,7 +13,7 @@ export function NewOrder() {
 
     return (
         <>
-            <Buttom title="Novo chamado" onPress={handleSnapPress} />
+            <Button title="Novo chamado" onPress={handleSnapPress} />
 
             <BottomSheetModalProvider>
                 <BottomSheetModal
@@ -23,9 +23,11 @@ export function NewOrder() {
                     ref={bottomSheetRef}
                     backgroundComponent={() => <Background />}
                 >
-                    <OrderForm />
+                    <BottomSheetView>
+                        <OrderForm closeSnap={() => bottomSheetRef.current.dismiss()}/>
+                    </BottomSheetView>
                 </BottomSheetModal>
             </BottomSheetModalProvider>
         </>
-    )
+    );
 }

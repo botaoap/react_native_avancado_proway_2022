@@ -4,26 +4,45 @@ import { FlatList } from "react-native";
 import { Load } from "../../Animations/Load";
 import { Order, OrderProps } from "../../Controllers/Order";
 import { Filters } from "../../Controllers/Filters";
+import { useEffect } from "react";
+import firestore from "@react-native-firebase/firestore";
 
 export function Orders() {
     const [status, setStatus] = useState<"open" | "closed">("open");
-    const [orders, setOrders] = useState<OrderProps[]>([
-        { id: "sdasda", description: "description", equipment: "Casda", patrimony: "asdasda", status: "closed" }
-    ]);
+    const [orders, setOrders] = useState<OrderProps[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+
+        const subscriber = firestore()
+            .collection("Orders")
+            .onSnapshot(documentSnapshot => {
+                const orders = documentSnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data(),
+                    created_at: doc.data()?.created_at?.seconds
+                })) as OrderProps[];
+
+                setOrders(orders);
+                setIsLoading(false);
+            });
+
+        return () => subscriber();
+    }, []);
 
     return (
         <Container>
             <Filters onFilter={setStatus} />
 
             <Header>
-                <Title>Chamados {status === "open" ? "abertos" : "encerrados" }</Title>
+                <Title>Chamados {status === "open" ? "abertos" : "encerrados"}</Title>
                 <Counter>{orders.length}</Counter>
             </Header>
 
             {
                 isLoading ?
-                    <Load /> : 
+                    <Load /> :
                     <FlatList
                         data={orders}
                         keyExtractor={item => item.id}
