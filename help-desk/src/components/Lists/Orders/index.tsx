@@ -17,6 +17,7 @@ export function Orders() {
 
         const subscriber = firestore()
             .collection("Orders")
+            .where("status","==",status)
             .onSnapshot(documentSnapshot => {
                 const orders = documentSnapshot.docs.map(doc => ({
                     id: doc.id,
@@ -29,7 +30,7 @@ export function Orders() {
             });
 
         return () => subscriber();
-    }, []);
+    }, [status]);
 
     return (
         <Container>
