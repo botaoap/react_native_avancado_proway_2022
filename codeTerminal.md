@@ -16,3 +16,8 @@ No terminal da pasta do projeto
 - npx expo start -c
 - npm i @react-native-firebase/app --force -> percistir os dados
 - npm i @react-native-firebase/auth --force -> autenticacao
+
+# TODO APP
+- npm i -g expo-cli
+- npm expo init todo-app
+- npm i react-native-paper react-native-reanimated lottie-react-native
