@@ -21,3 +21,6 @@ No terminal da pasta do projeto
 - npm i -g expo-cli
 - npm expo init todo-app
 - npm i react-native-paper react-native-reanimated lottie-react-native
+- npm start
+- npm run android
+- npx expo start -c
