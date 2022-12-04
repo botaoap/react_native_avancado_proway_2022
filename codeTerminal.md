@@ -24,3 +24,4 @@ No terminal da pasta do projeto
 - npm start
 - npm run android
 - npx expo start -c
+- npm i react-native-uuid
