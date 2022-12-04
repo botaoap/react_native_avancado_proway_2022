@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StatusBar, Text } from 'react-native';
+import { SignInScreen } from './src/screens/SignInScreen';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { theme } from './src/themes';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { TodoProvider } from './src/context/TodoContext';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider theme={theme}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatusBar />
+        {/* <SignInScreen /> */}
+        <TodoProvider>
+          <HomeScreen />
+        </TodoProvider>
+      </SafeAreaView>
+    </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
