@@ -25,3 +25,13 @@ No terminal da pasta do projeto
 - npm run android
 - npx expo start -c
 - npm i react-native-uuid
+### Navigation inside APP
+- https://reactnavigation.org/docs/getting-started
+- Follow doc to install libs
+- npm install @react-navigation/native
+- npm install react-native-screens react-native-safe-area-context
+- <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>
+- *Hello Navigation*
+- npm install @react-navigation/native-stack
+- *AsyncStorage*
+- npx expo install @react-native-async-storage/async-storage

@@ -14,5 +14,5 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Verificar se NodeJS está instalado: node --version
 * Instalar se não tiver instaldo: [NodeJS](https://nodejs.org/en/download/) 
 
-## Duvidas RN // TODO: fazer "duvidas"
+## Duvidas RN
 - Code terminal: [DOUBT](codeTerminal.md)
