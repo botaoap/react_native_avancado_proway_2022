@@ -42,7 +42,7 @@ export function CheckBox({ onCheck,isChecked }: Props) {
                 loop={false}
                 resizeMode="cover"
                 ref={animation}
-                style={{ height: 64, width: 64 }}
+                style={{ height: 36, width: 36 }}
             />
         </TouchableOpacity>
     )
