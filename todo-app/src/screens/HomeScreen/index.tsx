@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { FlatList, Text, View } from "react-native"
+import { FlatList, ScrollView, Text, View } from "react-native"
 import { CheckBox } from "../../components/CheckBox"
 import { TodoForm } from "../../components/TodoForm"
 import { TodoItem } from "../../components/TodoItem"
@@ -12,14 +12,17 @@ export function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <Text>Lista de tarefas</Text>
-            <View style={{ flex: 1 }}>
-                {
-                    todos.map(todo => (
-                        <TodoItem todo={todo} key={todo.id} />
-                    ))
-                }
-            </View>
+            <Text style={styles.title}>Lista de tarefas</Text>
+            <ScrollView>
+                <View style={{ flex: 1 }}>
+                    {
+                        todos.map(todo => (
+                            <TodoItem todo={todo} key={todo.id} />
+                        ))
+                    }
+                </View>
+            </ScrollView>
+
             <View style={styles.form} >
                 <TodoForm />
             </View>

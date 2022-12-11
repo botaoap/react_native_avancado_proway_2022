@@ -8,9 +8,5 @@ export const styles = StyleSheet.create({
         backgroundColor: "#eee",
         alignItems: "center",
         height: 80
-    },
-    descriptionText: {
-        flex: 1,
-        fontSize: 22,
     }
 })
