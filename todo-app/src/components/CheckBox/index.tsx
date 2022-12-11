@@ -4,33 +4,38 @@ import Lottie from "lottie-react-native"
 import { styles } from "./styles";
 
 type Props = {
-    onCheck: (newValue: boolean) => void,
+    onCheck: VoidFunction,
     isChecked: boolean
 }
 
-export function CheckBox({ onCheck }: Props) {
+export function CheckBox({ onCheck,isChecked }: Props) {
     const animation = useRef<any>(null);
-    const [checked, setChecked] = useState(false);
     const firstRun = useRef(true)
-
+    
+    
     useEffect(() => {
-        if (!firstRun.current) {
-            if(checked) {
-                animation.current.play(0,30);
+        if (firstRun.current) {
+            if(!isChecked) {
+                animation.current.play(0,0);
             } else {
-                animation.current.play(30, 0);
+                animation.current.play(30, 30);
             }
         } else {
-            if(checked) {
-                animation.current.play(30,30);
-                firstRun.current = false;
+            if(!isChecked) {
+                animation.current.play(30,0);
+            } else {
+                animation.current.play(0, 30);
             }
         }
-        onCheck(!checked);
-    }, [checked])
+    }, [isChecked])
+
+    function handleChecked() {
+        firstRun.current = false
+        onCheck()
+    }
 
     return(
-        <TouchableOpacity style={styles.checkbox} onPress={() => setChecked(!checked)}>
+        <TouchableOpacity style={styles.checkbox} onPress={handleChecked}>
             <Lottie
                 source={require("../../assets/checkbox.json")}
                 autoPlay={false}
