@@ -1,10 +1,9 @@
 import React from "react"
-import { View } from "react-native"
 import { CheckBox } from "../CheckBox"
 import { IconButton, Text } from "react-native-paper"
 import { useTodo } from "../../context/TodoContext"
 import { styles } from "./styles"
-import Animated, { Layout, LightSpeedInLeft, LightSpeedInRight } from "react-native-reanimated"
+import Animated, { Layout, LightSpeedInLeft, LightSpeedInRight, LightSpeedOutRight } from "react-native-reanimated"
 
 export interface Todo {
     id: string,
@@ -17,15 +16,16 @@ type Props = {
 }
 
 export function TodoItem({ todo }: Props) {
-    const { deleteTodo } = useTodo();
+    const { deleteTodo, toggleTodo } = useTodo();
 
     return (
         <Animated.View
             style={styles.container}
             entering={LightSpeedInLeft}
             layout={Layout.springify()}
-            exiting={LightSpeedInRight}
+            exiting={LightSpeedOutRight}
         >
+            <CheckBox onCheck={() => toggleTodo(todo.id)} isChecked={todo.completed} />
             <Text style={styles.descriptionText}>{todo.description}</Text>
             <IconButton onPress={() => deleteTodo(todo.id)} size={32} style={{ backgroundColor: "red"}} icon={"delete"} color="#fff"/>
         </Animated.View>

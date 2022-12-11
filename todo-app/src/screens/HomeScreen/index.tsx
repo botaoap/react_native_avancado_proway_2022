@@ -13,12 +13,16 @@ export function HomeScreen() {
     return (
         <View style={styles.container}>
             <Text>Lista de tarefas</Text>
-            <FlatList
-                data={todos}
-                renderItem={({ item }) => <TodoItem todo={item} /> }
-                keyExtractor={(item) => item.id}
-            />
-            <TodoForm />
+            <View style={{ flex: 1 }}>
+                {
+                    todos.map(todo => (
+                        <TodoItem todo={todo} key={todo.id} />
+                    ))
+                }
+            </View>
+            <View style={styles.form} >
+                <TodoForm />
+            </View>
         </View>
     )
 }

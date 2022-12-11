@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import { Button, TextInput } from "react-native-paper";
 import { styles } from "./styles";
 import Lottie from "lottie-react-native";
+import { useAuth } from "../../context/AuthContext";
 
 
 export function SignInScreen() {
     const [logoSize] = useState(new Animated.Value(300));
     const [isLottieVisible, setIsLottieVisible] = useState(true);
+    const { login } = useAuth();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     useEffect(() => {
         const showSubscription = Keyboard.addListener("keyboardDidShow", () => shrinkLogo());
@@ -49,9 +53,9 @@ export function SignInScreen() {
                 }
             </Animated.View>
             <View style={styles.form}>
-                <TextInput label={"E-mail"} mode="outlined" />
-                <TextInput label={"Senha"} mode="outlined" />
-                <Button style={styles.button} mode="contained" icon={"send"}>Logar</Button>
+                <TextInput label={"E-mail"} mode="outlined" onChangeText={setUsername} />
+                <TextInput secureTextEntry label={"Senha"} mode="outlined" onChangeText={setPassword} />
+                <Button style={styles.button} mode="contained" icon={"send"} onPress={() => login(username, password)}>Logar</Button>
             </View>
         </KeyboardAvoidingView>
     );

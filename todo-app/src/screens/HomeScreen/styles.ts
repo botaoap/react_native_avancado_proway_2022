@@ -3,5 +3,9 @@ import { StyleSheet } from "react-native"
 export const styles = StyleSheet.create({
     container: {
         flex: 1
+    },
+    form: {
+        marginHorizontal: 16,
+        marginBottom: 8
     }
 })
