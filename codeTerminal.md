@@ -35,3 +35,10 @@ No terminal da pasta do projeto
 - npm install @react-navigation/native-stack
 - *AsyncStorage*
 - npx expo install @react-native-async-storage/async-storage
+
+## Test with Detox CLI inside APP
+- https://wix.github.io/Detox/docs/next/introduction/project-setup
+- npm install detox-cli --global
+- npm install "jest@^29" --save-dev
+- npm install detox --save-dev
+- npx detox init
